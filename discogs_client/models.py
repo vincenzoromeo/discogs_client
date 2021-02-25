@@ -416,8 +416,9 @@ class Inventory(PaginatedList):
             "weight": weight,
             "format_quantity": format_quantity,
         }
-        self.client._post(self.client._base_url + '/marketplace/listings', omit_none(data))
+        listing_data = self.client._post(self.client._base_url + '/marketplace/listings', omit_none(data))
         self._invalidate()
+        return listing_data
 
 
 class OrderMessagesList(PaginatedList):
